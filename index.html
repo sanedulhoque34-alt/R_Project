@@ -1,71 +1,563 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>My Product Store</title>
-    <style>
-        body {
-            font-family: Arial;
-            background: #f5f5f5;
-            text-align: center;
-        }
-        h1 {
-            margin-top: 20px;
-        }
-        .container {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .card {
-            background: white;
-            padding: 20px;
-            margin: 20px;
-            width: 250px;
-            border-radius: 10px;
-            box-shadow: 0 0 10px gray;
-        }
-        img {
-            width: 100%;
-            border-radius: 10px;
-        }
-        button {
-            padding: 10px;
-            background: green;
-            color: white;
-            border: none;
-            cursor: pointer;
-            margin-top: 10px;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GismosHubb · UV Printed Wardrobe Art</title>
+  <!-- Google Fonts & simple icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,400;14..32,500;14..32,600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #f9fafc;
+      color: #1e1e2a;
+      line-height: 1.5;
+    }
+
+    /* header / navigation */
+    .top-bar {
+      background: #ffffff;
+      box-shadow: 0 2px 12px rgba(0, 0, 0, 0.02);
+      padding: 1rem 2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      border-bottom: 1px solid #edeef2;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .brand-icon {
+      background: #1e2b3c;
+      color: #ffffff;
+      width: 44px;
+      height: 44px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.8rem;
+      box-shadow: 0 6px 10px rgba(0,0,0,0.03);
+    }
+
+    .brand-text {
+      font-weight: 600;
+      font-size: 1.7rem;
+      letter-spacing: -0.5px;
+      color: #1e2b3c;
+    }
+    .brand-text span {
+      font-weight: 400;
+      color: #6b7a8d;
+      font-size: 1rem;
+      margin-left: 8px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      font-weight: 500;
+      color: #3a4756;
+    }
+    .nav-links a {
+      text-decoration: none;
+      color: inherit;
+      font-size: 1rem;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #1e2b3c;
+      font-weight: 600;
+    }
+    .nav-links i {
+      margin-right: 6px;
+      font-size: 0.9rem;
+    }
+
+    .cart-icon {
+      background: #f0f3f7;
+      padding: 10px 18px;
+      border-radius: 40px;
+      font-weight: 500;
+      color: #1e2b3c;
+      transition: 0.2s;
+    }
+    .cart-icon i {
+      margin-right: 8px;
+    }
+    .cart-icon:hover {
+      background: #e3e8ef;
+    }
+
+    /* main */
+    .hero-mini {
+      text-align: center;
+      padding: 2.5rem 1.5rem 0.8rem;
+    }
+    .hero-mini h1 {
+      font-size: 2.8rem;
+      font-weight: 600;
+      letter-spacing: -1px;
+      color: #0f1a24;
+    }
+    .hero-mini h1 i {
+      color: #4f6f8f;
+      margin-right: 12px;
+    }
+    .tagline {
+      font-size: 1.2rem;
+      color: #536878;
+      margin-top: 8px;
+      font-weight: 400;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+    .tagline .badge {
+      background: #eef3fa;
+      padding: 6px 16px;
+      border-radius: 40px;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #1e3a5f;
+    }
+    .badge i {
+      margin-right: 6px;
+    }
+
+    /* product grid — professional, spacious */
+    .product-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: stretch;
+      gap: 30px;
+      padding: 2rem 2rem 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .product-card {
+      background: #ffffff;
+      border-radius: 28px;
+      width: 320px;
+      padding: 1.8rem 1.5rem 2rem;
+      box-shadow: 0 18px 36px -12px rgba(0, 20, 30, 0.08), 0 6px 14px -6px rgba(0,0,0,0.02);
+      transition: all 0.25s ease;
+      border: 1px solid #f0f3f8;
+      display: flex;
+      flex-direction: column;
+    }
+    .product-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 28px 40px -14px rgba(18, 38, 58, 0.12);
+      border-color: #dae2ec;
+    }
+
+    /* image area – UV print showcase style */
+    .card-media {
+      background: #f2f6fc;
+      border-radius: 20px;
+      padding: 20px 10px 10px;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .uv-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      background: rgba(30, 43, 60, 0.85);
+      backdrop-filter: blur(4px);
+      color: white;
+      font-size: 0.7rem;
+      font-weight: 600;
+      padding: 5px 12px;
+      border-radius: 40px;
+      letter-spacing: 0.3px;
+      z-index: 2;
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    .uv-badge i {
+      margin-right: 6px;
+      font-size: 0.7rem;
+    }
+
+    .product-img {
+      width: 100%;
+      aspect-ratio: 1/1;
+      object-fit: cover;
+      border-radius: 18px;
+      display: block;
+      background: #d9e2ec;
+      box-shadow: inset 0 0 0 1px rgba(0,0,0,0.02), 0 8px 12px -6px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .product-card:hover .product-img {
+      transform: scale(1.02);
+    }
+
+    /* placeholder style – elegant representation of UV prints */
+    .img-placeholder {
+      background: linear-gradient(145deg, #1e2b3c 0%, #2c4053 100%);
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      border-radius: 18px;
+      aspect-ratio: 1/1;
+      box-shadow: inset 0 2px 8px rgba(0,0,0,0.2), 0 8px 12px -6px rgba(0,0,0,0.2);
+    }
+    .placeholder-icon {
+      font-size: 3.8rem;
+      opacity: 0.9;
+      margin-bottom: 12px;
+      text-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    }
+    .placeholder-text {
+      font-weight: 500;
+      letter-spacing: 2px;
+      font-size: 1rem;
+      text-transform: uppercase;
+      background: rgba(255,255,255,0.1);
+      padding: 6px 14px;
+      border-radius: 30px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* product info */
+    .product-title {
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: -0.3px;
+      margin-bottom: 8px;
+      color: #0e1c2a;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .product-title i {
+      color: #5e7c9c;
+      font-size: 1.2rem;
+    }
+
+    .design-spec {
+      color: #5f7485;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .design-spec i {
+      font-size: 0.8rem;
+      color: #7f95aa;
+    }
+
+    .price-section {
+      margin: 12px 0 18px;
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+    }
+    .price {
+      font-size: 2rem;
+      font-weight: 700;
+      color: #14222e;
+    }
+    .price small {
+      font-size: 1rem;
+      font-weight: 400;
+      color: #6b7e91;
+      margin-left: 4px;
+    }
+    .uv-tag {
+      background: #eef2f8;
+      padding: 6px 14px;
+      border-radius: 40px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: #1e3b5a;
+      text-transform: uppercase;
+      letter-spacing: 0.4px;
+    }
+
+    .btn-buy {
+      background: #1e2b3c;
+      color: white;
+      border: none;
+      padding: 16px 10px;
+      font-size: 1.1rem;
+      font-weight: 600;
+      border-radius: 60px;
+      cursor: pointer;
+      width: 100%;
+      transition: all 0.2s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-top: auto;
+      border: 1px solid #2e3f51;
+      letter-spacing: 0.3px;
+    }
+    .btn-buy i {
+      font-size: 1.2rem;
+    }
+    .btn-buy:hover {
+      background: #14212e;
+      box-shadow: 0 12px 18px -8px rgba(18, 38, 58, 0.2);
+      transform: scale(1.01);
+    }
+
+    /* features row */
+    .usp-bar {
+      background: #ffffffd6;
+      backdrop-filter: blur(4px);
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 40px;
+      padding: 1.5rem 2rem;
+      margin: 0.5rem 2rem 1rem;
+      border-radius: 100px;
+      border: 1px solid #e2e9f1;
+    }
+    .usp-item {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 500;
+      color: #1e2b3c;
+    }
+    .usp-item i {
+      font-size: 1.3rem;
+      color: #3d637f;
+    }
+
+    .footer-note {
+      text-align: center;
+      padding: 2rem 0 2.5rem;
+      color: #6b7f91;
+      font-size: 0.95rem;
+      border-top: 1px solid #e6ecf2;
+      margin-top: 1rem;
+    }
+    .footer-note strong {
+      color: #1e2b3c;
+    }
+
+    /* responsiveness */
+    @media (max-width: 700px) {
+      .top-bar {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .nav-links {
+        gap: 1.5rem;
+      }
+      .hero-mini h1 {
+        font-size: 2.2rem;
+      }
+      .product-grid {
+        padding: 1rem 1rem 3rem;
+      }
+      .usp-bar {
+        border-radius: 30px;
+        margin: 1rem 1rem;
+      }
+    }
+  </style>
 </head>
 <body>
 
-<h1>🛒 My Online Store</h1>
-
-<div class="container">
-
-    <div class="card">
-        <img src="https://via.placeholder.com/250">
-        <h2>Product 1</h2>
-        <p>Price: ₹499</p>
-        <button>Buy Now</button>
+<!-- header: GismosHubb identity -->
+<div class="top-bar">
+  <div class="logo-area">
+    <div class="brand-icon">
+      <i class="fas fa-print"></i>
     </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/250">
-        <h2>Product 2</h2>
-        <p>Price: ₹799</p>
-        <button>Buy Now</button>
+    <div class="brand-text">
+      GismosHubb<span>· UV wardrobe prints</span>
     </div>
-
-    <div class="card">
-        <img src="https://via.placeholder.com/250">
-        <h2>Product 3</h2>
-        <p>Price: ₹999</p>
-        <button>Buy Now</button>
-    </div>
-
+  </div>
+  <div class="nav-links">
+    <a href="#" class="active"><i class="fas fa-tshirt"></i> Wardrobe</a>
+    <a href="#"><i class="fas fa-palette"></i> Designs</a>
+    <a href="#"><i class="fas fa-cube"></i> Custom</a>
+  </div>
+  <div class="cart-icon">
+    <i class="fas fa-shopping-bag"></i> Cart (0)
+  </div>
 </div>
+
+<!-- hero section with company focus -->
+<div class="hero-mini">
+  <h1>
+    <i class="fas fa-sun" style="color: #d4a017;"></i> 
+    UV Printed Wardrobe Art
+  </h1>
+  <div class="tagline">
+    <span>by <strong>GismosHubb</strong> — premium direct‑to‑garment prints</span>
+    <span class="badge"><i class="fas fa-check-circle"></i> scratch‑resistant · vivid</span>
+  </div>
+</div>
+
+<!-- trust / usp strip -->
+<div class="usp-bar">
+  <div class="usp-item"><i class="fas fa-paint-brush"></i> exclusive UV designs</div>
+  <div class="usp-item"><i class="fas fa-clock"></i> 3–5 day dispatch</div>
+  <div class="usp-item"><i class="fas fa-shield-alt"></i> fade‑proof finish</div>
+  <div class="usp-item"><i class="fas fa-wardrobe"></i> premium wardrobe fit</div>
+</div>
+
+<!-- product cards: representing wardrobe UV prints -->
+<div class="product-grid">
+  
+  <!-- product 1: abstract UV print -->
+  <div class="product-card">
+    <div class="card-media">
+      <span class="uv-badge"><i class="fas fa-splotches"></i> UV DTF print</span>
+      <!-- custom graphic placeholder – mimics UV print style -->
+      <div class="img-placeholder">
+        <div class="placeholder-icon"><i class="fas fa-bolt"></i></div>
+        <div class="placeholder-text">GismosHubb · nebula</div>
+      </div>
+    </div>
+    <div class="product-title">
+      <i class="fas fa-vest"></i> ASTRAL FLARE
+    </div>
+    <div class="design-spec">
+      <span><i class="far fa-circle"></i> UV matte · wardrobe</span>
+      <span><i class="fas fa-ruler-combined"></i> S–XXL</span>
+    </div>
+    <div class="price-section">
+      <div class="price">₹1,499 <small>INR</small></div>
+      <div class="uv-tag"><i class="fas fa-gem"></i> premium UV</div>
+    </div>
+    <button class="btn-buy"><i class="fas fa-bag-shopping"></i> Customize & Buy</button>
+  </div>
+  
+  <!-- product 2: geometric / modern UV print -->
+  <div class="product-card">
+    <div class="card-media">
+      <span class="uv-badge"><i class="fas fa-splotches"></i> UV DTF print</span>
+      <div class="img-placeholder" style="background: linear-gradient(135deg, #1e3c4f, #0f2838);">
+        <div class="placeholder-icon"><i class="fas fa-shapes"></i></div>
+        <div class="placeholder-text">GismosHubb · geo</div>
+      </div>
+    </div>
+    <div class="product-title">
+      <i class="fas fa-vest"></i> CUBIC EDGE
+    </div>
+    <div class="design-spec">
+      <span><i class="far fa-circle"></i> gloss UV accents</span>
+      <span><i class="fas fa-ruler-combined"></i> S–XXL</span>
+    </div>
+    <div class="price-section">
+      <div class="price">₹1,799 <small>INR</small></div>
+      <div class="uv-tag"><i class="fas fa-gem"></i> limited edition</div>
+    </div>
+    <button class="btn-buy"><i class="fas fa-bag-shopping"></i> Customize & Buy</button>
+  </div>
+  
+  <!-- product 3: bold typography / UV statement -->
+  <div class="product-card">
+    <div class="card-media">
+      <span class="uv-badge"><i class="fas fa-splotches"></i> UV DTF print</span>
+      <div class="img-placeholder" style="background: linear-gradient(145deg, #223b4b, #10212b);">
+        <div class="placeholder-icon"><i class="fas fa-font"></i></div>
+        <div class="placeholder-text">GismosHubb · type</div>
+      </div>
+    </div>
+    <div class="product-title">
+      <i class="fas fa-vest"></i> TYPO RAW
+    </div>
+    <div class="design-spec">
+      <span><i class="far fa-circle"></i> UV + 3D texture</span>
+      <span><i class="fas fa-ruler-combined"></i> XS–3XL</span>
+    </div>
+    <div class="price-section">
+      <div class="price">₹2,099 <small>INR</small></div>
+      <div class="uv-tag"><i class="fas fa-fire"></i> bestseller</div>
+    </div>
+    <button class="btn-buy"><i class="fas fa-bag-shopping"></i> Customize & Buy</button>
+  </div>
+  
+  <!-- product 4: flora / nature UV wardrobe print -->
+  <div class="product-card">
+    <div class="card-media">
+      <span class="uv-badge"><i class="fas fa-splotches"></i> UV DTF print</span>
+      <div class="img-placeholder" style="background: linear-gradient(145deg, #1e423e, #0f2e2b);">
+        <div class="placeholder-icon"><i class="fas fa-leaf"></i></div>
+        <div class="placeholder-text">GismosHubb · botanic</div>
+      </div>
+    </div>
+    <div class="product-title">
+      <i class="fas fa-vest"></i> VERDANT VEIL
+    </div>
+    <div class="design-spec">
+      <span><i class="far fa-circle"></i> eco UV inks</span>
+      <span><i class="fas fa-ruler-combined"></i> S–XXL</span>
+    </div>
+    <div class="price-section">
+      <div class="price">₹1,649 <small>INR</small></div>
+      <div class="uv-tag"><i class="fas fa-leaf"></i> nature series</div>
+    </div>
+    <button class="btn-buy"><i class="fas fa-bag-shopping"></i> Customize & Buy</button>
+  </div>
+</div>
+
+<!-- extra info: customization CTA -->
+<div style="text-align: center; margin: 0 2rem 2rem;">
+  <div style="background: #eef3f9; display: inline-block; padding: 0.9rem 2.5rem; border-radius: 80px; color: #1e2b3c; font-weight: 500;">
+    <i class="fas fa-pen-fade" style="margin-right: 12px;"></i> 
+    Upload your own design · GismosHubb UV print studio 
+    <i class="fas fa-arrow-right" style="margin-left: 12px;"></i>
+  </div>
+</div>
+
+<!-- footer -->
+<div class="footer-note">
+  <strong>GismosHubb</strong> — UV printed wardrobe, engineered to last.  <i class="fas fa-print" style="margin:0 6px;"></i>  100% original designs.
+  <div style="margin-top: 10px; font-size: 0.8rem;">© 2026 GismosHubb · premium wardrobe prints</div>
+</div>
+
+<!-- tiny interaction (just for polish) -->
+<script>
+  (function() {
+    // Make buttons a bit more interactive — simple alert with GismosHubb branding
+    const buttons = document.querySelectorAll('.btn-buy');
+    buttons.forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        const card = this.closest('.product-card');
+        const title = card?.querySelector('.product-title')?.innerText || 'this design';
+        alert(`✨ GismosHubb UV Studio ✨\n"${title.trim()}" added to customization queue.\nWe’ll guide you through size & finish.`);
+      });
+    });
+    // Cart dummy
+    document.querySelector('.cart-icon')?.addEventListener('click', () => {
+      alert('🛒 GismosHubb cart — start your UV wardrobe journey.');
+    });
+  })();
+</script>
 
 </body>
 </html>
