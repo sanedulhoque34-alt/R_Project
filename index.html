@@ -145,21 +145,14 @@
             z-index: 1001;
         }
 
+        /* ✅ NAVBAR LOGO FIX — image ko bhi wahi size milega */
         .nav-logo-icon {
             width: 44px;
             height: 44px;
-            background: linear-gradient(145deg, var(--brown), var(--brown-dark));
             border-radius: var(--radius-sm);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--cream);
-            font-weight: 900;
-            font-size: 1.1rem;
-            letter-spacing: -0.02em;
-            font-family: 'Rajdhani', sans-serif;
             box-shadow: var(--shadow-sm);
             flex-shrink: 0;
+            object-fit: cover;  /* image ko proper fit karne ke liye */
         }
 
         .nav-logo-text {
@@ -453,20 +446,6 @@
             background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
             pointer-events: none;
         }
-        .hero-image-placeholder {
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 800;
-            font-size: clamp(2rem, 4vw, 3rem);
-            color: rgba(62, 36, 21, 0.3);
-            text-align: center;
-            padding: 24px;
-            letter-spacing: 0.04em;
-        }
-        .hero-image-placeholder .icon-huge {
-            font-size: clamp(4rem, 8vw, 7rem);
-            display: block;
-            margin-bottom: 8px;
-        }
         .hero-float-card {
             position: absolute;
             bottom: -16px;
@@ -581,15 +560,6 @@
             inset: 0;
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, transparent 50%);
             pointer-events: none;
-        }
-        .about-image-text {
-            font-family: 'Rajdhani', sans-serif;
-            font-weight: 800;
-            color: rgba(62, 36, 21, 0.35);
-            font-size: 3rem;
-            text-align: center;
-            letter-spacing: 0.05em;
-            padding: 20px;
         }
         .about-content h2 {
             font-size: 2rem;
@@ -1176,6 +1146,7 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="#" class="nav-logo" aria-label="SECUREX Home">
+                <!-- ✅ LOGO IMAGE — "SECURE X.png" ko apni asli file name se replace karein -->
                 <img src="SECURE X.png" alt="SECUREX Logo" class="nav-logo-icon">
                 <div class="nav-logo-text">SECUREX<span>by Shah Interio</span></div>
             </a>
@@ -1219,12 +1190,8 @@
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Contact on WhatsApp
                     </a>
-                    <!-- ==================== DOWNLOAD CATALOGUE BUTTON ==================== -->
-                    <!-- 
-                        INSTRUCTION: Replace "catalogue.pdf" with the actual path to your PDF file.
-                        For example: href="assets/SECUREX-Catalogue.pdf" or a direct URL.
-                        The "download" attribute will prompt the user to save the file.
-                    -->
+                    <!-- DOWNLOAD CATALOGUE BUTTON -->
+                    <!-- "Secure_X.pdf" ko apni asli PDF file name se replace karein -->
                     <a href="Secure_X.pdf" class="btn btn-outline" download>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         Download Catalogue
@@ -1232,19 +1199,9 @@
                 </div>
             </div>
             <div class="hero-image-wrapper">
-                <!-- 
-                    =============== HERO IMAGE REPLACEMENT INSTRUCTION ===============
-                    To use a real product image instead of this placeholder:
-                    1. Remove the entire <div class="hero-image-placeholder"> block.
-                    2. Replace it with an <img> tag like:
-                       <img src="your-hero-image.jpg" alt="SECUREX Steel Almirah" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
-                       OR set a background image on the parent .hero-image-box:
-                       style="background: url('your-image.jpg') center/cover no-repeat;"
-                    =====================================================================
-                -->
+                <!-- ✅ HERO IMAGE — "hero-image.jpg" ya "hero-image.png" use karein -->
                 <div class="hero-image-box">
-                    <img src="hero-image.jpg.png" alt="SECUREX Steel Almirah" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
-                        
+                    <img src="hero-image.jpg" alt="SECUREX Steel Almirah" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
                 </div>
                 <div class="hero-float-card">
                     <div class="hero-float-icon">⭐</div>
@@ -1258,29 +1215,31 @@
     <section class="section" id="about">
         <div class="container">
             <div class="about-grid reveal">
-                <!-- 
-                    =============== ABOUT IMAGE REPLACEMENT INSTRUCTION ===============
-                    Replace the placeholder inside .about-image similar to hero:
-                    Remove <div class="about-image-text"> and insert an <img> tag,
-                    or change the .about-image background to url('your-about-image.jpg') center/cover no-repeat.
-                -->
+                <!-- ✅ ABOUT IMAGE — "XYZ.png" ko apni factory/product image se replace karein -->
                 <div class="about-image">
-                     <img src="XYZ.png" alt="xyz.png" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
+                    <img src="XYZ.png" alt="Shah Interio Manufacturing" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
                 </div>
-                <span class="section-label">About Us</span>
+                <!-- ✅ YEH .about-content DIV THA MISSING — ab sahi alignment ke liye wrap kar diya -->
+                <div class="about-content">
+                    <span class="section-label">About Us</span>
                     <h2>Shah Interio – The Force Behind SECUREX</h2>
-                    <p>Welcome to <strong>Shah Interio</strong>, the proud manufacturer of the <strong>SECUREX</strong> brand of steel furniture. Under the leadership of <strong>Brajesh Steel</strong>, we have been crafting high-quality steel almirahs, storage cabinets, and custom metal furniture for businesses across India.</p>
-                    <p>Every SECUREX product is engineered for <strong>durability, rust resistance, and modern aesthetics</strong>. We combine industrial-grade steel with precision manufacturing to deliver furniture that lasts for decades.</p>
+                    <p>Shah Interio is the proud manufacturer of the SECUREX brand of premium steel furniture. Under the leadership of Brajesh Steel, we specialize in producing high-quality steel almirahs, storage cabinets, and customized metal furniture for B2B clients across Odisha and beyond.</p>
+                    <p>Our strength lies in our advanced manufacturing setup and modern production technology. We use high-precision machines such as Fiber Laser Cutting Machines, CNC Bending Machines, Almirah Printing Machines, and Glossy Finishing Units. These technologies help us achieve superior accuracy, consistent quality, and a premium finish in every product we manufacture.</p>
+                    <p>Every SECUREX product is designed for durability, rust resistance, and modern aesthetics. We use industrial-grade steel combined with precision engineering to ensure long-lasting performance and strong build quality.</p>
+                    <p>With a focus on bulk production, customization, and timely delivery, Shah Interio has become a trusted partner for wholesalers, retailers, and institutional buyers.</p>
                     <div class="about-highlights">
-                        <span class="about-highlight-tag">Durable Construction</span>
-                        <span class="about-highlight-tag">Rust Resistant</span>
+                        <span class="about-highlight-tag">Advanced Machinery</span>
+                        <span class="about-highlight-tag">Precision Manufacturing</span>
+                        <span class="about-highlight-tag">Rust Resistant Finish</span>
                         <span class="about-highlight-tag">Modern Designs</span>
+                        <span class="about-highlight-tag">Bulk Production Capability</span>
                         <span class="about-highlight-tag">B2B Specialists</span>
                     </div>
-                </div>
+                </div><!-- ✅ .about-content closing -->
             </div>
         </div>
     </section>
+
     <!-- ==================== FEATURES ==================== -->
     <section class="section section-alt" id="features">
         <div class="container">
@@ -1364,18 +1323,7 @@
                 <p class="section-desc">A glimpse into our diverse collection of steel almirahs, cabinets, and custom solutions.</p>
             </div>
             <div class="gallery-grid">
-                <!-- 
-                    =============== GALLERY IMAGE REPLACEMENT INSTRUCTION ===============
-                    Each .gallery-item currently shows a text placeholder.
-                    To add real photos:
-                    - Delete the entire <div class="gallery-placeholder"> block inside a .gallery-item.
-                    - Instead, add an <img> tag with the product photo:
-                      <img src="product1.jpg" alt="2-Door Almirah" style="width:100%; height:100%; object-fit:cover;">
-                    - Keep the .gallery-overlay div for the hover text.
-                    - Alternatively, you can set a background image on the .gallery-item itself:
-                      style="background: url('product1.jpg') center/cover no-repeat;"
-                    Repeat for all six gallery items.
-                -->
+                <!-- ✅ GALLERY — har .gallery-placeholder ko <img> se replace karein -->
                 <div class="gallery-item reveal">
                     <div class="gallery-placeholder"><span class="gp-icon">🗄️</span>2-Door Almirah</div>
                     <div class="gallery-overlay">Classic 2-Door Steel Almirah</div>
@@ -1486,7 +1434,7 @@
                     <ul class="footer-links">
                         <li><a href="tel:+919179539610">📞 +91 9179539610</a></li>
                         <li><a href="https://wa.me/919179539610">💬 WhatsApp Chat</a></li>
-                        <li>📍 Brajesh Steel, India</li>
+                        <li>📍 Brajesh Steel, Kantabaji, Odisha</li>
                         <li>🌐 shahinterio.com</li>
                     </ul>
                 </div>
