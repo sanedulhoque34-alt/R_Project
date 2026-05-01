@@ -145,14 +145,13 @@
             z-index: 1001;
         }
 
-        /* ✅ NAVBAR LOGO FIX — image ko bhi wahi size milega */
         .nav-logo-icon {
             width: 44px;
             height: 44px;
             border-radius: var(--radius-sm);
             box-shadow: var(--shadow-sm);
             flex-shrink: 0;
-            object-fit: cover;  /* image ko proper fit karne ke liye */
+            object-fit: cover;
         }
 
         .nav-logo-text {
@@ -269,7 +268,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* ============ HERO ============ */
+        /* ============ HERO (ENHANCED) ============ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -277,37 +276,39 @@
             padding-top: var(--navbar-height);
             position: relative;
             overflow: hidden;
-            background: linear-gradient(170deg, #FEFAE0 0%, #F5ECD7 30%, #E8D5B4 70%, #D4C4A0 100%);
+            background: linear-gradient(165deg, #FFF9E6 0%, #FEFAE0 25%, #F5ECD7 50%, #E8D5B4 80%, #D4C4A0 100%);
         }
         .hero::before {
             content: '';
             position: absolute;
-            top: -120px;
-            right: -180px;
-            width: 650px;
-            height: 650px;
-            background: radial-gradient(circle, rgba(139, 111, 78, 0.1) 0%, transparent 70%);
+            top: -80px;
+            right: -120px;
+            width: 700px;
+            height: 700px;
+            background: radial-gradient(circle, rgba(255,255,255,0.7) 0%, rgba(232,213,180,0.35) 40%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            z-index: 0;
         }
         .hero::after {
             content: '';
             position: absolute;
-            bottom: -100px;
-            left: -120px;
-            width: 500px;
-            height: 500px;
-            background: radial-gradient(circle, rgba(92, 61, 46, 0.07) 0%, transparent 70%);
+            bottom: -120px;
+            left: -80px;
+            width: 550px;
+            height: 550px;
+            background: radial-gradient(circle, rgba(254,250,224,0.6) 0%, rgba(196,168,130,0.2) 40%, transparent 70%);
             border-radius: 50%;
             pointer-events: none;
+            z-index: 0;
         }
 
         .hero-content {
             position: relative;
-            z-index: 1;
+            z-index: 2;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 48px;
+            gap: 56px;
             align-items: center;
             width: 100%;
             max-width: 1200px;
@@ -315,51 +316,47 @@
             padding: 40px 24px;
         }
 
-        .hero-text {
-            animation: fadeInUp 0.8s ease-out;
-        }
+        .hero-text { animation: fadeInUp 0.8s ease-out; }
+
         .hero-badge {
             display: inline-flex;
             align-items: center;
             gap: 8px;
-            background: rgba(92, 61, 46, 0.08);
-            border: 1px solid rgba(139, 111, 78, 0.3);
-            padding: 8px 16px;
+            background: rgba(92, 61, 46, 0.06);
+            border: 1px solid rgba(139, 111, 78, 0.35);
+            padding: 9px 20px;
             border-radius: 50px;
             font-size: 0.85rem;
             font-weight: 600;
             color: var(--brown);
-            margin-bottom: 20px;
+            margin-bottom: 22px;
             letter-spacing: 0.03em;
+            backdrop-filter: blur(4px);
         }
         .hero-badge-dot {
-            width: 8px;
-            height: 8px;
+            width: 8px; height: 8px;
             background: var(--gold-accent);
             border-radius: 50%;
             animation: pulse-dot 2s infinite;
         }
         @keyframes pulse-dot {
-            0%,
-            100% {
-                box-shadow: 0 0 0 0 rgba(184, 134, 11, 0.5);
-            }
-            50% {
-                box-shadow: 0 0 0 12px rgba(184, 134, 11, 0);
-            }
+            0%, 100% { box-shadow: 0 0 0 0 rgba(184,134,11,0.5); }
+            50% { box-shadow: 0 0 0 12px rgba(184,134,11,0); }
         }
 
         .hero h1 {
-            font-size: clamp(2.5rem, 5.5vw, 4rem);
+            font-size: clamp(2.4rem, 5.5vw, 4rem);
             font-weight: 900;
             color: var(--brown-dark);
-            margin-bottom: 16px;
-            line-height: 1.05;
+            margin-bottom: 14px;
+            line-height: 1.1;
             letter-spacing: -0.02em;
         }
         .hero h1 .highlight {
-            background: linear-gradient(180deg, transparent 60%, rgba(184, 134, 11, 0.25) 60%);
-            padding: 0 4px;
+            background: linear-gradient(180deg, transparent 45%, rgba(184,134,11,0.4) 45%);
+            padding: 0 6px;
+            border-radius: 4px;
+            display: inline-block;
         }
         .hero-subtitle {
             font-size: clamp(1rem, 1.8vw, 1.2rem);
@@ -367,115 +364,130 @@
             margin-bottom: 32px;
             font-weight: 400;
             max-width: 440px;
+            line-height: 1.65;
         }
         .hero-buttons {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 14px;
+            display: flex; flex-wrap: wrap; gap: 14px;
         }
         .btn {
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
+            display: inline-flex; align-items: center; gap: 10px;
             padding: 14px 28px;
             border-radius: 50px;
-            font-weight: 600;
-            font-size: 1rem;
-            cursor: pointer;
-            border: none;
-            transition: all var(--transition-bounce);
+            font-weight: 600; font-size: 1rem;
+            cursor: pointer; border: none;
+            transition: all 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
             font-family: 'Outfit', sans-serif;
             white-space: nowrap;
             letter-spacing: 0.01em;
         }
         .btn-primary {
-            background: var(--brown);
-            color: var(--cream);
-            box-shadow: var(--shadow-md);
+            background: var(--brown); color: var(--cream);
+            box-shadow: 0 8px 28px rgba(62,36,21,0.18);
         }
         .btn-primary:hover {
             background: var(--brown-dark);
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 40px rgba(62,36,21,0.28);
         }
         .btn-whatsapp {
-            background: #25D366;
-            color: #fff;
-            box-shadow: var(--shadow-md);
+            background: #25D366; color: #fff;
+            box-shadow: 0 8px 28px rgba(37,211,102,0.25);
         }
         .btn-whatsapp:hover {
             background: #1ebe57;
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 40px rgba(37,211,102,0.35);
         }
         .btn-outline {
-            background: transparent;
-            color: var(--brown-dark);
+            background: transparent; color: var(--brown-dark);
             border: 2px solid var(--brown-dark);
         }
         .btn-outline:hover {
-            background: var(--brown-dark);
-            color: var(--cream);
-            transform: translateY(-3px);
+            background: var(--brown-dark); color: var(--cream);
+            transform: translateY(-4px) scale(1.02);
+            box-shadow: 0 14px 40px rgba(62,36,21,0.2);
         }
-        .btn svg {
-            width: 18px;
-            height: 18px;
-            flex-shrink: 0;
-        }
+        .btn svg { width: 18px; height: 18px; flex-shrink: 0; }
 
         .hero-image-wrapper {
             position: relative;
             animation: fadeInUp 1s ease-out 0.2s both;
+            max-width: 580px;
+            margin-left: auto;
         }
         .hero-image-box {
             background: linear-gradient(160deg, #E8D5B4 0%, #C4A882 40%, #A08060 100%);
             border-radius: var(--radius-xl);
-            aspect-ratio: 4/3;
+            aspect-ratio: 3 / 4;
             display: flex;
             align-items: center;
             justify-content: center;
-            box-shadow: var(--shadow-xl);
+            box-shadow: 0 25px 70px rgba(62,36,21,0.22);
             position: relative;
             overflow: hidden;
+            z-index: 2;
         }
         .hero-image-box::after {
             content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(180deg, rgba(255, 255, 255, 0.15) 0%, transparent 50%);
+            position: absolute; inset: 0;
+            background: linear-gradient(180deg, rgba(255,255,255,0.2) 0%, transparent 50%);
             pointer-events: none;
         }
+        .hero-image-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: var(--radius-xl);
+            transition: transform 0.5s ease;
+        }
+        .hero-image-box:hover img {
+            transform: scale(1.03);
+        }
+
+        .hero-image-tag {
+            position: absolute;
+            top: 18px;
+            left: 18px;
+            z-index: 5;
+            background: rgba(30, 20, 10, 0.75);
+            backdrop-filter: blur(6px);
+            -webkit-backdrop-filter: blur(6px);
+            color: #fff;
+            font-size: 0.72rem;
+            font-weight: 500;
+            padding: 6px 14px;
+            border-radius: 30px;
+            letter-spacing: 0.04em;
+            border: 1px solid rgba(255,255,255,0.2);
+            pointer-events: none;
+        }
+
         .hero-float-card {
             position: absolute;
-            bottom: -16px;
-            right: -12px;
-            background: var(--white);
+            bottom: -18px;
+            right: -16px;
+            z-index: 10;
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255,255,255,0.6);
             border-radius: var(--radius-md);
-            padding: 16px 20px;
-            box-shadow: var(--shadow-lg);
+            padding: 16px 22px;
+            box-shadow: 0 12px 40px rgba(62,36,21,0.18);
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 14px;
             animation: floatCard 4s ease-in-out infinite;
         }
         @keyframes floatCard {
-            0%,
-            100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-14px);
-            }
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-14px); }
         }
         .hero-float-icon {
-            width: 44px;
-            height: 44px;
+            width: 44px; height: 44px;
             border-radius: 50%;
-            background: rgba(37, 211, 102, 0.15);
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            background: rgba(37,211,102,0.12);
+            display: flex; align-items: center; justify-content: center;
             font-size: 1.4rem;
         }
         .hero-float-text {
@@ -488,18 +500,12 @@
             display: block;
             font-weight: 400;
             color: var(--text-light);
-            font-size: 0.75rem;
+            font-size: 0.73rem;
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(36px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(36px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         /* ============ SECTIONS ============ */
@@ -977,14 +983,8 @@
             pointer-events: none;
         }
         @keyframes pulse-ring {
-            0% {
-                transform: scale(1);
-                opacity: 0.7;
-            }
-            100% {
-                transform: scale(1.6);
-                opacity: 0;
-            }
+            0% { transform: scale(1); opacity: 0.7; }
+            100% { transform: scale(1.6); opacity: 0; }
         }
 
         /* Scroll Animation */
@@ -1005,35 +1005,14 @@
                 gap: 32px;
                 text-align: center;
             }
-            .hero-subtitle {
-                max-width: 100%;
-                margin-left: auto;
-                margin-right: auto;
-            }
-            .hero-buttons {
-                justify-content: center;
-            }
-            .hero-image-wrapper {
-                max-width: 480px;
-                margin: 0 auto;
-            }
-            .about-grid {
-                grid-template-columns: 1fr;
-            }
-            .about-image {
-                max-width: 480px;
-                margin: 0 auto;
-            }
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-            .hero-float-card {
-                right: 0;
-                bottom: -8px;
-            }
+            .hero-subtitle { max-width: 100%; margin-left: auto; margin-right: auto; }
+            .hero-buttons { justify-content: center; }
+            .hero-image-wrapper { max-width: 480px; margin: 0 auto; }
+            .about-grid { grid-template-columns: 1fr; }
+            .about-image { max-width: 480px; margin: 0 auto; }
+            .contact-grid { grid-template-columns: 1fr; }
+            .footer-grid { grid-template-columns: 1fr 1fr; }
+            .hero-float-card { right: 0; bottom: -8px; }
         }
 
         @media (max-width: 768px) {
@@ -1052,91 +1031,31 @@
                 box-shadow: var(--shadow-xl);
                 z-index: 1000;
             }
-            .nav-links.active {
-                right: 0;
-            }
-            .nav-cta {
-                display: none;
-            }
-            .nav-cta-mobile {
-                display: flex;
-                flex-direction: column;
-                gap: 10px;
-                margin-top: 16px;
-            }
-            .hamburger {
-                display: flex;
-            }
-            .nav-links .nav-cta-mobile {
-                display: flex;
-            }
-            .hero {
-                min-height: auto;
-                padding: 120px 0 60px;
-            }
-            .section {
-                padding: 56px 0;
-            }
-            .footer-grid {
-                grid-template-columns: 1fr;
-                gap: 32px;
-            }
-            .hero-float-card {
-                display: none;
-            }
-            .gallery-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 12px;
-            }
-            .features-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
-            .why-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 16px;
-            }
+            .nav-links.active { right: 0; }
+            .nav-cta { display: none; }
+            .nav-cta-mobile { display: flex; flex-direction: column; gap: 10px; margin-top: 16px; }
+            .hamburger { display: flex; }
+            .nav-links .nav-cta-mobile { display: flex; }
+            .hero { min-height: auto; padding: 120px 0 60px; }
+            .section { padding: 56px 0; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+            .hero-float-card { display: none; }
+            .gallery-grid { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+            .features-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+            .why-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
         }
 
         @media (max-width: 480px) {
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
-            .why-grid {
-                grid-template-columns: 1fr;
-            }
-            .gallery-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 10px;
-            }
-            .hero h1 {
-                font-size: 2rem;
-            }
-            .btn {
-                padding: 12px 20px;
-                font-size: 0.9rem;
-            }
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-            .hero-buttons .btn {
-                width: 100%;
-                justify-content: center;
-            }
-            .contact-form {
-                padding: 20px;
-            }
-            .whatsapp-float {
-                bottom: 18px;
-                right: 16px;
-                width: 50px;
-                height: 50px;
-            }
-            .whatsapp-float svg {
-                width: 24px;
-                height: 24px;
-            }
+            .features-grid { grid-template-columns: 1fr; }
+            .why-grid { grid-template-columns: 1fr; }
+            .gallery-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+            .hero h1 { font-size: 2rem; }
+            .btn { padding: 12px 20px; font-size: 0.9rem; }
+            .hero-buttons { flex-direction: column; align-items: center; }
+            .hero-buttons .btn { width: 100%; justify-content: center; }
+            .contact-form { padding: 20px; }
+            .whatsapp-float { bottom: 18px; right: 16px; width: 50px; height: 50px; }
+            .whatsapp-float svg { width: 24px; height: 24px; }
         }
     </style>
 </head>
@@ -1146,7 +1065,6 @@
     <nav class="navbar" id="navbar">
         <div class="navbar-inner">
             <a href="#" class="nav-logo" aria-label="SECUREX Home">
-                <!-- ✅ LOGO IMAGE — "SECURE X.png" ko apni asli file name se replace karein -->
                 <img src="SECURE X.png" alt="SECUREX Logo" class="nav-logo-icon">
                 <div class="nav-logo-text">SECUREX<span>by Shah Interio</span></div>
             </a>
@@ -1172,15 +1090,15 @@
         </div>
     </nav>
 
-    <!-- ==================== HERO ==================== -->
+    <!-- ==================== HERO (ENHANCED) ==================== -->
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
                 <div class="hero-badge">
-                    <span class="hero-badge-dot"></span> B2B Steel Furniture Manufacturer
+                    <span class="hero-badge-dot"></span> Odisha’s Trusted B2B Steel Furniture Manufacturer
                 </div>
-                <h1>Securex Steel Almirahs – <span class="highlight">Built for Strength</span> &amp; Style</h1>
-                <p class="hero-subtitle">Trusted steel furniture manufacturer <strong>since 1995.</strong> Delivering durable, rust-resistant almirahs &amp; storage solutions to businesses across Odisha.</p>
+                <h1>Securex Steel Almirahs – <span class="highlight">Built for Strength</span> &amp; <span class="highlight">Style</span></h1>
+                <p class="hero-subtitle">Trusted steel furniture manufacturer <strong>since 1995.</strong> Delivering durable, rust‑resistant almirahs &amp; storage solutions to businesses across Odisha.</p>
                 <div class="hero-buttons">
                     <a href="#gallery" class="btn btn-primary">
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="3"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5L6 21"/></svg>
@@ -1190,8 +1108,6 @@
                         <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
                         Contact on WhatsApp
                     </a>
-                    <!-- DOWNLOAD CATALOGUE BUTTON -->
-                    <!-- "Secure_X.pdf" ko apni asli PDF file name se replace karein -->
                     <a href="Secure_X.pdf" class="btn btn-outline" download>
                         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
                         Download Catalogue
@@ -1199,9 +1115,9 @@
                 </div>
             </div>
             <div class="hero-image-wrapper">
-                <!-- ✅ HERO IMAGE — "hero-image.jpg" ya "hero-image.png" use karein -->
                 <div class="hero-image-box">
-                    <img src="hero-image.jpg.png" alt="SECUREX Steel Almirah" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
+                    <img src="hero-image.jpg.png" alt="SECUREX Steel Almirah">
+                    <span class="hero-image-tag">Manufacturing Unit • Odisha</span>
                 </div>
                 <div class="hero-float-card">
                     <div class="hero-float-icon">⭐</div>
@@ -1215,11 +1131,9 @@
     <section class="section" id="about">
         <div class="container">
             <div class="about-grid reveal">
-                <!-- ✅ ABOUT IMAGE — "XYZ.png" ko apni factory/product image se replace karein -->
                 <div class="about-image">
                     <img src="XYZ.png" alt="Shah Interio Manufacturing" style="width:100%; height:100%; object-fit:cover; border-radius:var(--radius-xl);">
                 </div>
-                <!-- ✅ YEH .about-content DIV THA MISSING — ab sahi alignment ke liye wrap kar diya -->
                 <div class="about-content">
                     <span class="section-label">About Us</span>
                     <h2>Shah Interio – The Force Behind SECUREX</h2>
@@ -1235,7 +1149,7 @@
                         <span class="about-highlight-tag">Bulk Production Capability</span>
                         <span class="about-highlight-tag">B2B Specialists</span>
                     </div>
-                </div><!-- ✅ .about-content closing -->
+                </div>
             </div>
         </div>
     </section>
@@ -1323,7 +1237,6 @@
                 <p class="section-desc">A glimpse into our diverse collection of steel almirahs, cabinets, and custom solutions.</p>
             </div>
             <div class="gallery-grid">
-                <!-- ✅ GALLERY — har .gallery-placeholder ko <img> se replace karein -->
                 <div class="gallery-item reveal">
                     <img src="almirah1.png.png" alt="2-Door Almirah" style="width:100%; height:100%; object-fit:cover;">
                     <div class="gallery-overlay">Heavy-Duty Storage Cabinet</div>
@@ -1514,7 +1427,6 @@
             });
         });
 
-        // Close mobile menu on resize
         window.addEventListener('resize', () => {
             if (window.innerWidth > 768) {
                 hamburger.classList.remove('active');
