@@ -49,6 +49,7 @@
             --transition-smooth: 0.35s cubic-bezier(0.4, 0, 0.2, 1);
             --transition-bounce: 0.45s cubic-bezier(0.34, 1.56, 0.64, 1);
             --navbar-height: 72px;
+            --container-max: 1320px;      /* increased from 1200px */
         }
 
         *,
@@ -102,7 +103,7 @@
 
         .container {
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--container-max);
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -133,7 +134,7 @@
             align-items: center;
             justify-content: space-between;
             height: var(--navbar-height);
-            max-width: 1200px;
+            max-width: var(--container-max);    /* updated */
             margin: 0 auto;
             padding: 0 24px;
         }
@@ -268,7 +269,7 @@
             transform: rotate(-45deg) translate(5px, -5px);
         }
 
-        /* ============ HERO (REFINED) ============ */
+        /* ============ HERO (FULL-WIDTH, REFINED) ============ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -294,14 +295,14 @@
             display: flex;
             align-items: flex-start;
             text-align: left;
-            padding: 48px 24px;
             width: 100%;
-            max-width: 1200px;
+            max-width: var(--container-max);     /* updated */
             margin: 0 auto;
+            padding: 48px 24px;
         }
 
         .hero-text {
-            max-width: 640px;
+            max-width: 640px;          /* keeps the text line-length comfortable */
             animation: fadeInUp 0.8s ease-out;
         }
 
@@ -1022,7 +1023,7 @@
         </div>
     </nav>
 
-    <!-- ==================== HERO (REFINED) ==================== -->
+    <!-- ==================== HERO (FULL-WIDTH BACKGROUND) ==================== -->
     <section class="hero" id="home">
         <div class="hero-content">
             <div class="hero-text">
